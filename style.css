@@ -1,0 +1,859 @@
+/* --- RESET & FONTS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; 
+}
+
+:root {
+    --font-head: 'Poppins', sans-serif;
+    --font-body: 'Lora', serif;
+    --color-gold: #FFD700;
+}
+
+body {
+    background-color: #000;
+    color: white;
+    font-family: var(--font-body);
+}
+
+/* --- SCROLL SNAP CONTAINER --- */
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+/* --- COMMON PAGE STYLES --- */
+.page {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center; /* Default Center */
+    align-items: center;
+    position: relative;
+    padding: 80px 100px; /* Increased padding for better margins */
+    overflow: hidden;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* --- LAYOUT ALIGNMENT UTILITIES (NEW!) --- */
+/* Forces content to the Left */
+.layout-left {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+/* Forces content to the Right */
+.layout-right {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* Forces content to Top-Left (For BenCab) */
+.layout-top-left {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 120px; /* Space for Navbar */
+}
+
+/* Forces content to Bottom-Right (For BenCab) */
+.layout-bottom-right {
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 80px;
+}
+
+
+/* --- TYPOGRAPHY UTILS --- */
+h1, h2, h3, h4 {
+    font-family: var(--font-head);
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+
+
+
+/* --- NAVIGATION (GRADIENT OVERLAY) --- */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 50px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none; 
+}
+
+nav .logo, nav ul { pointer-events: auto; }
+
+nav .logo {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 50px; /* Mas maluwag na spacing (from 30/40px) */
+    align-items: center;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8); 
+}
+
+nav a:hover {
+    color: var(--color-gold);
+    text-shadow: 0 0 10px var(--color-gold);
+}
+
+
+/* --- PAGE 1: HERO --- */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.glass-card {
+    /* Lower opacity (0.05) para kita yung mata sa likod */
+    background: rgba(255, 255, 255,0.05); 
+    /* Higher blur para readable pa rin ang text */
+    backdrop-filter: blur(0px); 
+    -webkit-backdrop-filter: blur(10px);
+    padding: 60px 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.3); /* Shine effect on top border only */
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%; /* Responsive width */
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Deep shadow for depth */
+}
+
+.hero-section h1 { 
+    font-size: 3.5rem; /* Mas malaki */
+    font-weight: 800;
+    letter-spacing: -1px; /* Tight spacing for modern look */
+    text-transform: uppercase;
+    /* White text with Gold Glow */
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 10px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+
+
+.divider {
+    height: 3px;
+    width: 80px;
+    background: var(--color-gold);
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 0 0 15px var(--color-gold); /* Glowing Effect */
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    animation: bounce 2s infinite;
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    opacity: 0.7;
+    text-shadow: 0 2px 5px black;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* --- IDENTITY SECTIONS --- */
+.content-box {
+    max-width: 500px; /* Mas payat para kita ang background */
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2; /* Make sure nasa ibabaw ng watermark */
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.content-box:hover {
+    transform: translateY(-5px); /* Konting galaw pag hinover */
+}
+
+/* Specific borders for alignment */
+/* --- SLIDE 2: PAPER / ARTIST THEME --- */
+.identity-1 .content-box {
+    background: rgba(255, 255, 240, 0.3); /* Mukhang papel */
+    color: #2c2c2c; /* Dark pencil color text */
+    border-left: 8px solid var(--color-gold);
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+    /* Handwritten feel for title */
+}
+
+.identity-1 h2 {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 600;
+    color: #000;
+}
+
+/* --- SLIDE 3: CODING / TERMINAL THEME --- */
+.identity-2 .content-box {
+    background: rgba(10, 10, 10, 0.5); /* Almost black */
+    color: #00ff41; /* Hacker Green Text */
+    border: 1px solid #00ff41;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+    font-family: 'Courier New', monospace; /* Code font */
+    
+}
+
+.identity-2 p {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e0e0e0; /* Off-white for reading */
+}
+
+/* Simulated Terminal Cursor Effect using CSS before */
+.identity-2 .content-box::before {
+    content: ">_";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-family: 'Courier New', monospace;
+    color: #00ff41;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* --- SLIDE 4: FUTURE / GOLD THEME --- */
+.identity-3 .content-box {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    color: white;
+    border-top: 1px solid rgba(255, 215, 0, 0.5); /* Gold top border */
+    border-bottom: 1px solid rgba(255, 215, 0, 0.5); /* Gold bottom border */
+    border-left: none; /* Remove old border */
+    border-right: none;
+    backdrop-filter: blur(15px);
+}
+
+.identity-3 p {
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* Readability shadow */
+}
+
+.glass-light {
+    background: rgba(255, 255, 255, 0.6); 
+    color: #1a1a1a; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+
+.dark-mode {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-left: 5px solid #00ff41;
+    box-shadow: 0 5px 15px rgba(0,255,65,0.2);
+    /* Center usually needs max-width increased a bit */
+    max-width: 700px; 
+}
+
+.identity-1 {
+    background: url('paper-texture.jpg');
+    background-size: cover;
+}
+
+.identity-2 {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('code-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.identity-3 {
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('network-bg.jpg');
+    background-size: cover;
+}
+
+/* --- HARANA --- */
+.harana-section {
+    position: relative; /* Important for the overlay */
+    background: #000; /* Fallback color */
+    overflow: hidden; /* Para walang lumagpas */
+}
+
+.harana-section::before {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Use your poster image here */
+    background: url('harana.jpg') center/cover no-repeat;
+    /* BLUR & DARKEN MAGIC: */
+    filter: blur(30px) brightness(0.6); 
+    transform: scale(1.1); /* Zoom in para walang puting gilid dahil sa blur */
+    z-index: 0;
+}
+
+.split-layout {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1300px;
+    width: 100%;
+}
+
+/* LEFT SIDE: Vertical Stack (Image Top, Player Bottom) */
+.harana-visual {
+    flex: 1; 
+    max-width: 450px; 
+    display: flex;
+    flex-direction: column; /* Ito ang magpapatong sa kanila */
+    align-items: center;    /* Gitna horizontal */
+    justify-content: center; /* Gitna vertical */
+}
+
+.harana-visual img {
+    max-width: 100%;
+    max-height: 65vh; /* Bigger image */
+    width: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+    transition: transform 0.5s ease; 
+}
+
+.harana-visual:hover img {
+    transform: scale(1.05) translateZ(20px);
+}
+
+.harana-text {
+    flex: 2; /* Ibig sabihin: "Gawin mong doble ang lapad nito kaysa sa image" */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.harana-text p {
+    font-size: 1rem; /* From default 1.1rem to 1rem */
+    line-height: 1.6;
+}
+
+/* --- MUSIC PLAYER --- */
+.harana-player-card {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    width: fit-content;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.harana-player-card:hover {
+    border-color: var(--color-gold);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.play-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    transition: transform 0.2s;
+}
+
+.play-btn:hover { transform: scale(1.1); }
+.play-btn svg { width: 15px; fill: black; margin-left: 2px; }
+
+.track-info { display: flex; flex-direction: column; }
+.track-title { font-family: var(--font-head); font-size: 0.9rem; font-weight: 600; color: white; }
+.track-artist { font-size: 0.75rem; color: #ccc; font-family: 'Courier New', monospace; }
+
+.neon-text {
+    font-size: 3rem;
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.tech-font {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* --- BENCAB SECTIONS --- */
+.bencab-intro {
+    /* Adjusted Spotlight: Mas maliwanag ang gitna (#4a4a4a) para halata ang effect */
+    background: radial-gradient(circle at center, #4a4a4a 0%, #000000 90%);
+    color: #333; 
+    position: relative;
+    overflow: hidden; /* Clean edges */
+}
+/* Find this in style.css and REPLACE it */
+
+.museum-plaque {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #f4f3ee; 
+    color: #1a1a1a;
+    
+    /* 1. Bawasan ang Padding (Ito yung space sa loob ng border) */
+    padding: 30px 40px; /* 30px Top/Bottom, 40px Left/Right */
+    
+    /* 2. Siguraduhing walang forced height */
+    min-height: auto; 
+    height: auto;
+    
+    /* 3. Tamang Lapad */
+    width: 90%;
+    max-width: 600px; /* Balik natin sa 600px para balanced */
+    
+    box-shadow: 0 30px 70px rgba(0,0,0,0.9);
+    border: 1px solid #999;
+    border-top: 5px solid var(--color-gold); 
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.museum-plaque .label {
+    margin-bottom: 10px; /* Binawasan from 20px */
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #666;
+    text-transform: uppercase;
+}
+.museum-plaque h3 {
+    margin-bottom: 2px; /* Binawasan from 10px -> halos dikit na sa title */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.museum-plaque h1 {
+    margin-bottom: 15px; /* Binawasan from 30px */
+    font-family: var(--font-body);
+    font-size: 2.5rem; /* Liitan konti font para di takaw space */
+    line-height: 1;
+}
+
+.tech-specs {
+    margin-top: 10px; /* Binawasan from 20px */
+}
+.mini-img-container img {
+    margin-top: 20px; /* Binawasan from 30/40px */
+    width: 180px; /* Liitan konti ang image para umiksi ang box */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 5px solid white;
+}
+.mini-img-container img:hover {
+    transform: scale(1.05);
+}
+.bencab-top, .bencab-bottom {
+    background-image: url('bencab.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* Darken the bg slightly so text pops */
+    position: relative;
+}
+.bencab-top::before, .bencab-bottom::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.1); /* 50% Darkness */
+    z-index: 0;
+}
+
+/* Specific Positions for Background to allow text placement */
+.bencab-top { 
+    background-position: center 20%; /* Tutok sa taas */
+    transform-origin: center top;
+}
+/* SLIDE 8: FOCUS ON BOTTOM (Feet & Legs) */
+.bencab-bottom { 
+    background-position: center 90%; /* Tutok sa baba */
+    transform-origin: center bottom;
+}
+
+/* --- NEW: CENTERED & MAXIMIZED TEXT PANEL --- */
+/* --- CINEMATIC ANALYSIS PANEL (COMPACT VERSION) --- */
+.analysis-panel {
+    position: relative;
+    z-index: 1;
+    
+    /* 1. NARROWER WIDTH */
+    width: 85%; /* Slightly less than 90% */
+    max-width: 800px; /* Reduced from 1000px to 800px */
+    
+    /* 2. COMPACT PADDING (Reduces Height) */
+    padding: 30px 40px; /* Reduced vertical padding from 50px to 30px */
+    
+    /* Style consistency */
+    background: rgba(15, 15, 15, 0.85); 
+    color: #e0e0e0;
+    border-radius: 10px;
+    border-top: 3px solid var(--color-gold); 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    /* 3. TIGHTER GAP (Reduces Height) */
+    gap: 15px; /* Reduced from 20px */
+}
+
+/* Typography Tweaks for Compactness */
+.analysis-panel h2 {
+    font-size: 2rem; /* Slightly smaller title */
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0; /* Remove default margins */
+}
+
+.analysis-panel h4 {
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    color: #999;
+    font-size: 0.9rem;
+    margin-top: -10px; /* Pull closer to title */
+    margin-bottom: 5px;
+}
+
+.analysis-panel p {
+    font-size: 1rem; /* Slightly smaller body text */
+    line-height: 1.6; /* Tighter line height */
+    text-align: justify; 
+    text-align-last: center; 
+    margin: 0;
+}
+
+/* Grid Adjustments for Page 8 */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; /* Tighter grid gap */
+    text-align: left; 
+}
+
+.analysis-item strong {
+    color: var(--color-gold);
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 2px; /* Tighter label spacing */
+    text-transform: uppercase;
+}
+
+.glass-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.mini-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.grid-row {
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
+}
+.grid-row strong {
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* --- SOSYOLOHIKAL --- */
+.socio-section {
+    background: url('old-manila.jpg'); /* Keep the image */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* Make sure color is distinct */
+    background-color: #111; 
+}
+
+.socio-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Gawing Black & White at Madilim */
+    background: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: grayscale(100%); 
+    z-index: 0;
+}
+
+.paper-overlay {
+    background: rgba(244, 235, 219, 0.9); 
+    color: #2b2b2b;
+    padding: 50px;
+    max-width: 800px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    border: 1px solid #999;
+    backdrop-filter: blur(2px);
+}
+
+.list-item {
+    padding-bottom: 15px !important; /* Bawasan ang spacing ng list */
+    margin-bottom: 15px !important;
+}
+
+.list-item p {
+    font-size: 0.95rem; /* Slightly smaller font for compact feel */
+    line-height: 1.5;
+}
+
+/* --- SIKOLOHIKAL --- */
+.psycho-section {
+    position: relative;
+    background: #000;
+    overflow: hidden;
+    /* Center layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.psycho-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    
+    /* Use the painting again, focus on her hiding */
+    background: url('bencab.jpg') center 20% / cover no-repeat;
+    
+    /* EFFECT: Black & White + Blur + Dark */
+    filter: grayscale(100%) blur(8px) brightness(0.3);
+    transform: scale(1.1);
+    z-index: 0;
+}
+
+.mood-box {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    width: 90%;
+    
+    /* Subtle Glass Effect */
+    background: rgba(0, 0, 0, 0.2);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    
+    text-align: center;
+}
+
+.mood-box h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.mood-box blockquote {
+    font-family: var(--font-head);
+    font-size: 3rem;
+    font-style: italic;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.mood-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+    font-weight: 300; /* Thin font for "whisper" feel */
+}
+
+/* --- CUSTOM CURSOR STYLES --- */
+.cursor-dot, .cursor-outline {
+    position: fixed;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none; 
+    mix-blend-mode: difference; 
+}
+.cursor-dot { width: 8px; height: 8px; background-color: white; }
+.cursor-outline { width: 40px; height: 40px; border: 1px solid white; transition: width 0.2s, height 0.2s; }
+body:hover .cursor-outline { opacity: 1; }
+
+/* --- PDF GENERATION / PRINT STYLES (FINAL FIX) --- */
+@media print {
+    /* 1. RESET COLORS & BACKGROUNDS */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        background-color: #000 !important; /* Keep black background for aesthetic */
+        color: white !important;
+        margin: 0;
+    }
+
+    /* 2. DISABLE SCROLL REVEAL (THE IMPORTANT FIX!) */
+    /* We force all animated elements to be visible, opaque, and reset positions */
+    .reveal-top, 
+    .reveal-bottom, 
+    .reveal-left, 
+    .reveal-right, 
+    .reveal-scale, 
+    .list-item,
+    [data-sr-id] { /* Targets all ScrollReveal elements */
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* 3. FIX HERO TEXT (Auto-type Issue) */
+    .auto-type { display: none !important; } /* Hide the moving text */
+    .print-static { display: inline !important; color: #FFD700 !important; } /* Show the fixed text */
+    .cursor-dot, .cursor-outline, .typed-cursor { display: none !important; } /* Hide cursors */
+
+    /* 4. FLATTEN LAYOUT */
+    .scroll-container {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+
+    .page {
+        height: 100vh !important;
+        width: 100% !important;
+        page-break-after: always !important;
+        break-inside: avoid !important;
+        position: relative !important;
+        display: flex !important;
+        /* Force Backgrounds to Show */
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* 5. TEXT VISIBILITY & COLORS */
+    h1, h2, h3, h4, p, span, div {
+        color: white !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+    }
+    
+    /* Keep Gold Accents */
+    strong { color: #FFD700 !important; }
+    .divider { background: #FFD700 !important; }
+    
+    /* Ensure Content Boxes are Visible */
+    .glass-card, .content-box, .glass-overlay, .museum-plaque {
+        opacity: 1 !important; /* Force opacity */
+        visibility: visible !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+        border: 1px solid rgba(255,255,255,0.5) !important;
+        box-shadow: none !important;
+        transform: none !important; /* Remove 3D tilts */
+    }
+
+    /* Museum Plaque specific override for readability */
+    .museum-plaque {
+        background: white !important;
+        color: black !important;
+    }
+    .museum-plaque * { color: black !important; text-shadow: none !important; }
+
+    /* 6. HIDE UI ELEMENTS */
+    nav, .btn-download, .harana-player-card, .scroll-indicator {
+       display: none !important;
+    }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .page { 
+        padding: 80px 20px 20px 20px; /* Adjust padding for mobile */
+        justify-content: center !important; /* Force center on mobile */
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    .content-box, .glass-overlay { max-width: 100%; border-left: none; border-top: 5px solid var(--color-gold); }
+    .identity-3 .content-box { border-right: none; }
+    
+    .split-layout { flex-direction: column; text-align: center; gap: 30px; }
+    .harana-player-card { margin: 20px auto; } 
+    .hero-section h1 { font-size: 2rem; }
+    nav { padding: 15px; background: rgba(0,0,0,0.8); }
+    nav .logo { font-size: 1rem; }
+    nav ul { gap: 15px; }
+    nav a { font-size: 0.7rem; }
+
+    .analysis-grid { grid-template-columns: 1fr; } /* Stack on mobile */
+    .analysis-panel { padding: 30px; }
+    
+    .cursor-dot, .cursor-outline { display: none; }
+    * { cursor: auto; }
+}
