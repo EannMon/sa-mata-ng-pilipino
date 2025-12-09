@@ -832,28 +832,125 @@ body:hover .cursor-outline { opacity: 1; }
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-    .page { 
-        padding: 80px 20px 20px 20px; /* Adjust padding for mobile */
-        justify-content: center !important; /* Force center on mobile */
-        align-items: center !important;
-        text-align: center !important;
+/* --- RESPONSIVE DESIGN (MOBILE & TABLET FIXES) --- */
+@media (max-width: 900px) {
+    /* 1. GENERAL PAGE ADJUSTMENTS */
+    .page {
+        padding: 80px 20px; /* Bawasan ang padding sa gilid (from 100px to 20px) */
+        height: auto; /* Allow scrolling kung sumobra ang content sa tangkad ng phone */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* 2. NAVIGATION BAR ADJUSTMENTS */
+    nav {
+        padding: 15px 20px; /* Mas maliit na nav padding */
+        background: rgba(0,0,0,0.9); /* Solid background para mabasa sa phone */
     }
     
-    .content-box, .glass-overlay { max-width: 100%; border-left: none; border-top: 5px solid var(--color-gold); }
-    .identity-3 .content-box { border-right: none; }
-    
-    .split-layout { flex-direction: column; text-align: center; gap: 30px; }
-    .harana-player-card { margin: 20px auto; } 
-    .hero-section h1 { font-size: 2rem; }
-    nav { padding: 15px; background: rgba(0,0,0,0.8); }
-    nav .logo { font-size: 1rem; }
-    nav ul { gap: 15px; }
-    nav a { font-size: 0.7rem; }
+    nav .logo {
+        font-size: 1rem;
+    }
 
-    .analysis-grid { grid-template-columns: 1fr; } /* Stack on mobile */
-    .analysis-panel { padding: 30px; }
+    nav ul {
+        gap: 15px; /* Pagdikitin ang links */
+    }
+
+    nav a {
+        font-size: 0.7rem; /* Paliitin ang font para magkasya */
+    }
     
-    .cursor-dot, .cursor-outline { display: none; }
-    * { cursor: auto; }
+    /* Hide the download button text on super small screens if needed, or make it icon only */
+    .btn-download {
+        padding: 5px 10px;
+        font-size: 0.6rem;
+    }
+
+    /* 3. HERO SECTION */
+    .hero-section h1 {
+        font-size: 2.5rem; /* Paliitin ang Title */
+    }
+    
+    .glass-card {
+        padding: 30px 20px;
+        width: 100%;
+    }
+
+    /* 4. CONTENT BOXES (Essay Sections) */
+    .content-box, .glass-overlay, .analysis-panel, .museum-plaque {
+        max-width: 100%;
+        width: 100%;
+        padding: 30px 20px; /* Bawasan ang padding */
+        border: none; /* Optional: Remove border on mobile for cleaner look */
+    }
+    
+    /* Remove Left/Right borders specifically for mobile so it looks clean */
+    .identity-1 .content-box, .identity-3 .content-box {
+        border-left: none;
+        border-right: none;
+        border-top: 3px solid var(--color-gold); /* Gawing top border na lang lahat */
+    }
+
+    /* 5. HARANA (SPLIT LAYOUT) */
+    .split-layout {
+        flex-direction: column; /* Ipatong ang image sa text */
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .harana-visual {
+        max-width: 100%;
+    }
+    
+    .harana-visual img {
+        max-height: 40vh; /* Liitan ang image sa phone */
+    }
+    
+    .harana-text {
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* 6. BENCAB SECTIONS */
+    .museum-plaque {
+        min-height: auto; /* Hayaan humaba depende sa text */
+    }
+    
+    .museum-plaque h1 {
+        font-size: 2rem;
+    }
+    
+    .mini-img-container img {
+        width: 150px; /* Liitan ang preview image */
+    }
+
+    /* Analysis Panels */
+    .analysis-panel {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .analysis-grid {
+        grid-template-columns: 1fr; /* Gawing 1 column na lang ang grid */
+        gap: 20px;
+    }
+
+    /* 7. HIDE MOUSE CURSOR (Touchscreen doesn't need it) */
+    .cursor-dot, .cursor-outline {
+        display: none !important;
+    }
+    
+    /* Reset Cursor to default */
+    * {
+        cursor: auto !important;
+    }
+    
+    /* 8. ADJUST SCROLL SNAP (Optional: minsan buggy sa phone, disable natin para smooth) */
+    .scroll-container {
+        scroll-snap-type: none; /* Disable snap for smoother mobile scroll */
+        height: auto;
+        overflow-y: auto;
+    }
 }
