@@ -453,9 +453,10 @@ details p {
     justify-content: center; /* Gitna vertical */
 }
 
+/* Update this part in style.css */
 .harana-visual img {
     max-width: 100%;
-    max-height: 65vh; /* Bigger image */
+    max-height: 50vh; /* Changed from 65vh to 50vh para di agaw space */
     width: auto;
     object-fit: contain;
     border-radius: 10px;
@@ -467,13 +468,27 @@ details p {
     transform: scale(1.05) translateZ(20px);
 }
 
+/* Update or Replace .harana-text in style.css */
 .harana-text {
-    flex: 2; /* Ibig sabihin: "Gawin mong doble ang lapad nito kaysa sa image" */
+    flex: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    
+    /* REMOVE justify-content: center; */
+    /* REPLACE WITH: */
+    justify-content: flex-start; /* Start from top para di maputol ang head */
+    
     border-radius: 20px;
     backdrop-filter: blur(5px);
+
+    /* NEW PROPERTIES FOR SCROLLING */
+    max-height: 80vh; /* Limit height to 80% of screen */
+    overflow-y: auto; /* Scrollable na siya pag sumobra */
+    padding-right: 15px; /* Iwas na matakpan ng scrollbar ang text */
+    
+    /* Optional: Hide scrollbar visually but keep functionality (Cleaner look) */
+    scrollbar-width: thin; 
+    scrollbar-color: var(--color-gold) rgba(255, 255, 255, 0.1);
 }
 
 .harana-text p {
@@ -1106,23 +1121,6 @@ body:hover .cursor-outline { opacity: 1; }
     .split-layout {
         flex-direction: column; /* Ipatong ang Image sa Text */
         gap: 30px;
-    }
-
-    .harana-visual {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .harana-visual img {
-        max-height: 40vh; /* Limit image height */
-        width: auto;
-    }
-
-    .harana-text {
-        width: 100%;
-        height: auto;
-        max-height: 60vh; /* Give space for scrolling text */
-        padding: 25px;
     }
     
     /* Ensure modal fits on phone screen */
