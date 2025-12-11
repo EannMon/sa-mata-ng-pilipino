@@ -8,6 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="welcome-toast" class="toast">
+        <div class="toast-content">
+            <span style="font-size: 1.5rem;">👋</span>
+            <div>
+                <h4 style="margin:0; color:var(--color-gold);">Welcome, Visitor!</h4>
+                <p style="margin:0; font-size: 0.8rem; color: #ccc;">Tuloy po kayo. Experience art with a soul.</p>
+            </div>
+        </div>
+    </div>
 
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
@@ -23,7 +32,6 @@
             <li><a href="#page2">Essay</a></li>
             <li><a href="#page5">Poster</a></li>
             <li><a href="#page6">Analysis</a></li>
-            <li><a href="#" class="btn-download" onclick="generatePDF()">Download PDF</a></li>
         </ul>
     </nav>
 
@@ -48,33 +56,41 @@
             <div class="content-box glass-light reveal-right">
                 <h2>Art and Identity in the Digital Age</h2>
                 <br>
-                <p>Long before we learned to write code or text, our ancestors were already using art as their "first language." But for me, connecting to this visual language was not easy. I envied classmates who were naturally good at art.</p>
-                <p>I remember my MSEP classes well: I aced written exams but struggled with paper mache and could only draw stickmen. I realized that art is not just about being good at holding a paintbrush—it is about the desire to express a message.</p>
+                <p>Long before we learned to write code or text, our ancestors were already using art as their "first language" by the usage of symbols encarved in different canvasses. But for me, connecting to this visual language was not easy. I envied my classmates who were naturally good at art. I remember my MSEP classes well: I aced written exams but struggled with visual outputs like paper mache and could only draw stickmen. Eventually, I realized that art is not just about being good at holding a paintbrush—it is about the desire to express a message.</p>
             </div>
         </section>
 
         <section id="page3" class="page identity-2">
-            <div class="content-box dark-mode reveal-scale">
-                <p>As a future IT professional, I learned a programmer is like a digital painter, and a developer is like a sculptor building a functional reality from raw code. I felt this "artistic satisfaction" when I started programming.</p>
-                <p>The feeling of fixing a bug or making the code work perfectly is just like the joy a painter has when they finish their masterpiece. Coding became my way of carving logic to make it real.</p>
+            <div class="code-particle" style="left: 10%; font-size: 1.5rem; animation-duration: 8s;">{ }</div>
+            <div class="code-particle" style="left: 80%; font-size: 1.5rem; animation-duration: 12s;">&lt;/&gt;</div>
+            <div class="code-particle" style="left: 20%; font-size: 1.5rem; animation-duration: 6s; animation-delay: 2s;">#code</div>
+            <div class="code-particle" style="left: 70%; font-size: 2.5rem; animation-duration: 10s; animation-delay: 1s;">;</div>
+            <div class="code-particle" style="left: 95%; font-size: 1.5rem; animation-duration: 8s;">{ }</div>
+            <div class="code-particle" style="left: 35%; font-size: 1.5rem; animation-duration: 12s;">&lt;/&gt;</div>
+            <div class="code-particle" style="left: 40%; font-size: 1.5rem; animation-duration: 6s; animation-delay: 2s;">#code</div>
+            <div class="code-particle" style="left: 15%; font-size: 2.5rem; animation-duration: 10s; animation-delay: 1s;">;</div>
+            <div class="code-particle" style="left: 80%; font-size: 1.5rem; animation-duration: 8s;">{ }</div>
+            <div class="code-particle" style="left: 60%; font-size: 1.5rem; animation-duration: 12s;">&lt;/&gt;</div>
+            <div class="code-particle" style="left: 75%; font-size: 1.5rem; animation-duration: 6s; animation-delay: 2s;">#code</div>
+
+            <div class="content-box dark-mode reveal-scale" style="position: relative; z-index: 2;">
+                <p>As a future IT professional, I learned a programmer is like a digital painter, and a developer is like a sculptor building a functional reality from raw code. I felt this "artistic satisfaction" when I started programming. The feeling of fixing a bug or making the code work perfectly is just like the joy a painter has when they finish their masterpiece. Coding became my way of carving logic to make it real.</p>
             </div>
         </section>
 
         <section id="page4" class="page identity-3 layout-left">
             <div class="content-box glass-light reveal-left">
-                <p>Technology is the modern "canvas," and digital tools are our chisels. As a Gen Z and digital native, I want to use these tools to show who we Filipinos really are.</p>
-                <p>I want to design platforms that reflect unique Filipino values: specifically "Bayanihan" and our genuine warmth. In a digital world that is often cold, my goal is to fill our interfaces with hospitality, proving that technology, like art, can also have a soul.</p>
+                <p>Technology is the modern "canvas," and digital tools are our chisels. As a Gen Z and digital native, I want to use these tools to show who we Filipinos really are. I want to design platforms that reflect unique Filipino values: specifically "Bayanihan" and our genuine warmth. In a digital world that is often cold, my goal is to fill our interfaces with hospitality, proving that technology, like art, can also have a soul.</p>
             </div>
         </section>
 
-                <section id="page5" class="page harana-section">
+        <section id="page5" class="page harana-section">
             <div class="split-layout">
                 
                 <div class="harana-visual reveal-left">
-                    <div data-tilt data-tilt-glare data-tilt-max-glare="0.5" style="margin-bottom: 30px;">
+                    <div data-tilt data-tilt-glare data-tilt-max-glare="0.5" style="margin-bottom: 20px;">
                         <img src="harana.jpg" alt="Digital Harana Artwork">
                     </div>
-
                     <div class="harana-player-card" onclick="toggleHarana()">
                         <div class="play-btn">
                             <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -89,17 +105,45 @@
                 <div class="harana-text reveal-right">
                     <h2 class="neon-text">DIGITAL HARANA</h2>
                     
-                    <p class="tech-font" style="color: #e0e0e0;">
-                        This artwork reimagines the traditional Filipino 'harana' as a metaphor for digital prudence, where the guitar strings strum glowing streams of positive data to push back the chaos of online misinformation and toxicity.
+                    <p class="tech-font" style="color: #e0e0e0; margin-bottom: 20px; font-size: 1rem;">
+                        This artwork reimagines the traditional Filipino 'harana' as a metaphor for digital prudence. It illustrates the deliberate choice to project meaningful, truthful messages (symbolized by glowing music) amidst the noise of 'error codes' and toxicity, reminding us that our greatest influence lies in the integrity of the content we share.
                     </p>
 
-                    <p class="tech-font" style="color: #ccc; font-size: 0.95rem;">
-                        It illustrates the deliberate choice to project meaningful, truthful messages amidst the noise of 'error codes' and digital static, symbolizing the modern Filipino value of <strong>delicadeza</strong>.
-                    </p>
+                    <div class="harana-details">
+                        
+                        <details>
+                            <summary>Main Message & Theme</summary>
+                            <div class="detail-content">
+                                <p><strong>Theme:</strong> Digital Prudence & Bayanihan.</p>
+                                <p><strong>Message:</strong> Just as a harana requires sincerity to win a heart, digital interaction requires <em>delicadeza</em> to win trust. The glowing notes represent "Bayanihan" in the digital age—helping one another by contributing positivity and truth to push back the darkness of misinformation.</p>
+                            </div>
+                        </details>
 
-                    <p class="tech-font" style="color: #ccc; font-size: 0.95rem;">
-                        Ultimately, it serves as a reminder that in a noisy digital world, our greatest influence lies in the integrity and quality of the content we choose to share.
-                    </p>
+                        <details>
+                            <summary>Elements of Art</summary>
+                            <div class="detail-content">
+                                <p><strong>Line:</strong> The fluid, curvilinear lines of the musical staff create a sense of grace, directly opposing the rigid, horizontal static lines of the "Error" text in the background.</p>
+                                <p><strong>Color:</strong> High contrast between the warm, inviting Gold/Cyan of the music and the cold, desaturated Red/Black of the background code creates emotional separation.</p>
+                                <p><strong>Shape:</strong> Organic shapes of the human figure and musical notes stand out against the geometric, boxy shapes of the glitched text.</p>
+                                <p><strong>Texture:</strong> The smooth texture of the <em>Barong Tagalog</em> and the guitar contrasts with the rough, grainy "noise" texture of the digital void.</p>
+                                <p><strong>Value:</strong> The glowing elements have high brightness (value), making them pop against the low-value (dark) shadows, directing the eye instantly to the subject.</p>
+                                <p><strong>Space:</strong> The composition uses shallow depth of field, bringing the guitarist forward while pushing the chaotic code into the background to show isolation from the noise.</p>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Principles of Design</summary>
+                            <div class="detail-content">
+                                <p><strong>Contrast:</strong> The strongest principle used is the clash between the "Human/Traditional" (Barong/Guitar) and the "Digital/Modern" (Glitch/Code), emphasizing the conflict between tradition and technology.</p>
+                                <p><strong>Emphasis:</strong> The glowing musical notes act as the focal point, drawing attention to the "output" or the message being sent by the subject.</p>
+                                <p><strong>Balance:</strong> Asymmetrical balance is achieved; the guitarist anchors the left side, while the floating stream of notes balances the visual weight on the right.</p>
+                                <p><strong>Movement:</strong> The swirling path of the musical notes creates visual movement, leading the viewer's eye from the guitar, up to the face, and out into the digital world.</p>
+                                <p><strong>Unity:</strong> Despite the contrast, unity is achieved through the lighting—the "glow" from the music illuminates the subject, visually connecting the player to his song.</p>
+                                <p><strong>Rhythm:</strong> The repetition of the binary codes creates a chaotic rhythm in the background, while the musical notes create a flowing, melodic rhythm in the foreground.</p>
+                            </div>
+                        </details>
+
+                    </div>
                 </div>
 
             </div>
@@ -132,8 +176,6 @@
                 
                 <p>
                     At first glance, the artwork shows a woman sitting on the ground, hugging a pillow tightly while covering part of her face. The composition is <strong>"centered"</strong> or placed in the middle, which emphasizes the extreme isolation of the character.
-                </p>
-                <p>
                     BenCab uses his signature <strong>"Sabel" style</strong>: this is seen in the lines that seem to move and flow in her dress, which opposes the hard and steady form of the pillow. The colors are pale and seem dirty (muted tones of brown, gray, and off-white), which suggests poverty, sadness, and a connection to the ground. The contrast between the dark background and the yellow pillow pulls the viewer's eyes toward the pillow, which is the center of attention and her only source of comfort.
                 </p>
             </div>
@@ -218,9 +260,25 @@
                 
                 <p>
                     I also feel her anxiety as her position is a natural human reaction when feeling extreme fear or trauma. She wants to return to a position where she is safe. For me, this gives a feeling of empathy and sadness, because it reminds us of moments when we also just want to hide and not face the noise of life.
-                </p>
+                </p>    
             </div>
+            
         </section>
+
+        <footer class="footer-section">
+            <div class="footer-left">
+                <p>"Technology connects us, but values keep us together."</p>
+            </div>
+
+            <div class="footer-center">
+                <p>Maraming Salamat po sa pagbisita!</p>
+            </div>
+
+            <div class="footer-right">
+                <p>© 2025 Emmanuel M. Lungay</p>
+            </div>
+
+        </footer>
 
     </main>
 
@@ -236,6 +294,8 @@
             // The @media print CSS handles the formatting.
             window.print();
         }
+        const navLi = document.querySelectorAll('nav ul li a');
+        const scrollContainer = document.querySelector('.scroll-container'); 
 
         // --- HARANA PLAYER LOGIC ---
         const audio = document.getElementById("harana-audio");
@@ -257,7 +317,26 @@
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
 
-        if (cursorDot && cursorOutline) {
+        // --- INSIDE THE SCROLL EVENT LISTENER ---
+        scrollContainer.addEventListener('scroll', () => {
+            
+            // ... (Existing Active Nav Logic) ...
+
+            // ... (Existing Gabay Button Logic) ...
+
+            // --- NEW: SHARE BUTTON LOGIC (Show only on Page 10) ---
+            const page10 = document.getElementById('page10');
+            const shareBtn = document.querySelector('.share-btn');
+
+            // Check kung nasa Page 10 na (bawas ng kalahati para lilitaw agad pagpasok)
+            if (scrollContainer.scrollTop >= (page10.offsetTop - page10.clientHeight / 2)) {
+                shareBtn.classList.add('show');
+            } else {
+                shareBtn.classList.remove('show');
+            }
+        });
+
+        if (window.innerWidth > 900 && cursorDot && cursorOutline) {
             window.addEventListener("mousemove", function(e) {
                 const posX = e.clientX;
                 const posY = e.clientY;
@@ -315,28 +394,66 @@
         sr.reveal('.analysis-item', { origin: 'bottom', interval: 300, delay: 500 }); 
 
         // --- ACTIVE NAVIGATION HIGHLIGHT ---
-        const navLi = document.querySelectorAll('nav ul li a');
-        const scrollContainer = document.querySelector('.scroll-container');
+        
 
-        scrollContainer.addEventListener('scroll', () => {
-            let current = '';
-            const page1 = document.getElementById('page1');
-            const page2 = document.getElementById('page2');
-            const page5 = document.getElementById('page5');
-            const page6 = document.getElementById('page6');
+        // --- WELCOME TOAST LOGIC ---
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('welcome-toast').classList.add('show');
+            }, 1000); // 
 
-            if (scrollContainer.scrollTop >= (page1.offsetTop - page1.clientHeight / 3)) current = 'page1';
-            if (scrollContainer.scrollTop >= (page2.offsetTop - page2.clientHeight / 3)) current = 'page2';
-            if (scrollContainer.scrollTop >= (page5.offsetTop - page5.clientHeight / 3)) current = 'page5';
-            if (scrollContainer.scrollTop >= (page6.offsetTop - page6.clientHeight / 3)) current = 'page6';
+            setTimeout(() => {
+                document.getElementById('welcome-toast').classList.remove('show');
+            }, 4500);
+        });
 
-            navLi.forEach(a => {
-                a.style.color = 'rgba(255,255,255,0.9)'; 
-                if (a.getAttribute('href').includes(current)) {
-                    a.style.color = 'var(--color-gold)'; 
-                }
+        // --- HOSPITALITY FEATURES LOGIC ---
+
+        // 1. DIGITAL MERIENDA
+        function offerMerienda() {
+            // Cute Alert (Pwede ring SweetAlert kung gusto mo, pero eto simple lang)
+            alert("☕ Digital Merienda Time!\n\nTake a deep breath. You're doing great! \n- Eann");
+        }
+
+
+        function scrollToTop() {
+            // Scroll the CONTAINER, not the window
+            scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 3. SHARE THE LIGHT
+        function shareTheLight() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("🕯️ Light Shared! \n\nLink copied to clipboard. Spread the positivity!");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+        // --- HARANA AUTO-COLLAPSE ACCORDION ---
+        const detailsElements = document.querySelectorAll("details");
+
+        detailsElements.forEach((targetDetail) => {
+            targetDetail.addEventListener("click", () => {
+                // Close all other details
+                detailsElements.forEach((detail) => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute("open");
+                    }
+                });
             });
         });
     </script>
+
+    <div class="floating-btn merienda-btn" onclick="offerMerienda()" title="Take a break!">
+        ☕
+        <span class="tooltip">Kape ka muna!</span>
+    </div>
+    <div class="floating-btn share-btn" onclick="shareTheLight()" title="Share the Light">
+        🕯️
+        <span class="tooltip">Share my work! xD</span>
+    </div>
+
+
 </body>
 </html>
